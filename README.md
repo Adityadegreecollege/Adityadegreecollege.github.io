@@ -1,1 +1,0 @@
-# Adityadegreecollege.github.io

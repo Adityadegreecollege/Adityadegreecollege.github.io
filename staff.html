@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Faculty - Aditya Degree College</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .section-title {
+            font-size: 3em;
+            margin-bottom: 60px;
+            font-family: 'Playfair Display', serif;
+            background: linear-gradient(20deg, #ff69b4, #ffa500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+           
+            border-radius: 2px;
+        }
+        .staff-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 35px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .staff-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .staff-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+
+        .staff-img {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            object-fit: cover;
+            border: 4px solid #ffa500;
+            transition: transform 0.3s ease;
+        }
+
+        .staff-card:hover .staff-img {
+            transform: rotate(5deg) scale(1.1);
+        }
+
+        .staff-details {
+            text-align: center;
+        }
+
+        .staff-details h3 {
+            color: #2f3542;
+            margin-bottom: 10px;
+        }
+
+        .staff-details p {
+            color: #666;
+            margin: 5px 0;
+        }
+
+        footer {
+            background: #2f3542;
+            color: white;
+            text-align: center;
+            padding: 30px;
+            margin-top: 80px;
+            font-family: 'Montserrat', sans-serif;
+        }
+    </style>
+</head>
+<body>
+
+    <section id="staff">
+        <h2 class="section-title">Our Faculty</h2>
+        <div class="staff-container"></div>
+    </section>
+    <script>
+        const staff = [
+            { 
+                img: 'https://github.com/Adityadegreecollege2019/Images-/blob/main/clgimages/Principal.JPG?raw=true',
+                name: 'L Prasad(Principal)',
+                subject: 'Mathematics and Statistics',
+                qual: 'M.Sc ,B.Ed',
+                exp: '18+ years experience'
+            },
+            { 
+                img: 'https://github.com/Adityadegreecollege2019/Images-/blob/main/clgimages/WhatsApp%20Image%202025-03-25%20at%2018.18.52_52b14dd4.jpg?raw=true',
+                name: 'Rajendra Nayak ',
+                subject: 'Telugu',
+                qual: 'B.Ed Telugu',
+                exp: '9 years experience'
+            },
+            { 
+                img: 'https://github.com/Adityadegreecollege2019/Images-/blob/main/clgimages/WhatsApp%20Image%202025-03-25%20at%2018.18.51_8a5552e9.jpg?raw=true',
+                name: 'K.Hanumanth Reddy',
+                subject: 'Commerce',
+                qual: 'M.Com',
+                exp: '10 years experience'
+            },
+            { 
+                img: 'https://github.com/Adityadegreecollege2019/Images-/blob/main/clgimages/WhatsApp%20Image%202025-03-25%20at%2018.18.51_0d02ab00.jpg?raw=true',
+                name:'D.Somashekar',
+                subject: 'Commerce',
+                qual: 'M.Com',
+                exp: '10 years experience'
+            },
+            { 
+                img: 'https://github.com/Adityadegreecollege2019/Images-/blob/main/clgimages/WhatsApp%20Image%202025-03-25%20at%2018.18.51_4dd53fb7.jpg?raw=true',
+                name: 'T.Lokesh',
+                subject: 'Computers',
+                qual: 'MCA',
+                exp: '8 years experience'
+            },
+            { 
+                img: 'https://github.com/Adityadegreecollege2019/Images-/blob/main/clgimages/WhatsApp%20Image%202025-03-25%20at%2018.18.50_fe585ffb.jpg?raw=true',
+                name: ' M.Anil ',
+                subject: 'Mathmetics',
+                qual: 'M.Sc(maths)',
+                exp: '8 years experience'
+            },
+            { 
+                img: 'https://github.com/Adityadegreecollege2019/Images-/blob/main/clgimages/bashasir.jpg?raw=true',
+                name: 'S.Mahaboob Basha ',
+                subject: 'Computers',
+                qual: 'MCA',
+                exp: '8- years experience'
+            },
+            { 
+                img: 'https://github.com/Adityadegreecollege2019/Images-/blob/main/clgimages/WhatsApp%20Image%202025-03-25%20at%2018.18.50_07e46fa2.jpg?raw=true',
+                name: 'S.Sreekanth Reddy',
+                subject: 'Physics',
+                qual: 'M.Sc(Physics)',
+                exp: '8 years experience'
+            },
+            { 
+                name: 'K.Safiya',
+                subject: 'Chemistry',
+                qual: 'M.Sc(Organic Chemistry)',
+                exp: '2 years experience'
+            },
+            {    
+                name: 'S.Rehana',
+                subject: 'English',
+                qual: 'M.A English',
+                exp: '10 years Experience'
+            }
+        ];
+
+        const staffContainer = document.querySelector('.staff-container');
+        staffContainer.innerHTML = staff.map(member => `
+            <div class="staff-card">
+                ${member.img ? `<img src="${member.img}" class="staff-img" alt="${member.name}">` : ''}
+                <div class="staff-details">
+                    <h3>${member.name}</h3>
+                    <p><strong>Subject:</strong> ${member.subject}</p>
+                    <p><strong>Qualification:</strong> ${member.qual}</p>
+                    <p><strong>Experience:</strong> ${member.exp}</p>
+                </div>
+            </div>
+        `).join('');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => entry.isIntersecting && entry.target.classList.add('active'));
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('section').forEach(section => observer.observe(section));
+
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if(navbar) {
+                navbar.style.background = window.scrollY > 50 ? 'rgba(0,0,0,0.95)' : 'rgba(0,0,0,0.9)';
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Existing head content remains same -->
+    <style>
+        /* Add new styles for features section */
+        .features-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .feature-card {
+            background: #fff;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid #ffa500;
+            cursor: pointer;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+            background: linear-gradient(45deg, #fff, #ffe6f2);
+        }
+
+        .feature-card h3 {
+            color: #2f3542;
+            margin-bottom: 15px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.5em;
+        }
+
+        .feature-card p {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <!-- Existing navbar and header remain same -->
+
+    <header class="header" id="home">
+        <!-- Existing header content -->
+    </header>
+
+    <!-- New Features Section -->
+    <section id="about-adc">
+        <h2 class="section-title">ADC Events</h2>
+        <div class="features-container">
+            <div class="feature-card">
+                <a href="cult.html" class="">
+                <h3>ADC Cultural Activities</h3></a>
+                <p>All kind of cultural activities</p>
+            </div>
+            <div class="feature-card">
+                <a href="sports.html" class="">
+                <h3>ADC Sports</h3></a>
+                <p>All kind of sports activities </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Existing courses, gallery, contact sections follow -->
+    <section id="courses">
+        <!-- Existing courses content -->
+    </section>
+
+    <!-- Remaining sections remain unchanged -->
+</body>
+</html>

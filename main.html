@@ -12,9 +12,9 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-          }
-      
-          .navbar {
+        }
+    
+        .navbar {
             position: fixed;
             top: 0;
             width: 100%;
@@ -22,57 +22,57 @@
             padding: 10px 0;
             z-index: 1000;
             transition: 0.3s;
-          }
-      
-          .nav-content {
+        }
+    
+        .nav-content {
             max-width: 1200px;
             margin: 0 auto;
             display: flex;
             flex-direction: column;
             align-items: center;
             padding: 0 20px;
-          }
-      
-          .logo-img {
+        }
+    
+        .logo-img {
             width: 60px;
             height: 60px;
             border-radius: 50%;
             margin-right: 10px;
             border: 2px solid #FFA500;
             padding: 2px;
-          }
-      
-          .logo:hover .logo-img {
+        }
+    
+        .logo:hover .logo-img {
             transform: rotate(360deg);
-          }
-      
-          .logo {
+        }
+    
+        .logo {
             display: flex;
             align-items: center;
             text-decoration: none;
-          }
-      
-          .logo-content {
+        }
+    
+        .logo-content {
             display: flex;
             flex-direction: column;
             justify-content: center;
-          }
-      
-          .logo h1 {
+        }
+    
+        .logo h1 {
             color: #fff;
             font-family: 'Montserrat', sans-serif;
             font-size: 1rem;
             text-shadow: 0 2px 4px rgba(0,0,0,0.2);
             line-height: 1.2;
             text-align: center;
-          }
-      
-          .logo h2 {
+        }
+    
+        .logo h2 {
             color: #fff;
             font-size: 0.8rem;
             text-align: center;
-          }
-      
+        }
+    
         .h2{
             text-align:center;
         }
@@ -117,14 +117,22 @@
 
         .header {
             height: 100vh;
-            background:
-                        url('images/college.jpeg') center/cover;
+            background-size: cover;
+            background-position: center;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
             color: BLUE;
+            overflow: hidden; /* This is crucial for the sliding effect */
+            position: relative;
         }
+
+        .header-content {
+            position: relative;
+            z-index: 10;
+        }
+
         .h1{
             color:orange;
         }
@@ -137,6 +145,23 @@
         @keyframes titleFloat {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-20px); }
+        }
+
+        .slideshow-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            transition: transform 1s ease-in-out; /* Smooth transition for the slide */
+        }
+        
+        .slideshow-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            flex-shrink: 0; /* Prevents images from shrinking */
         }
 
         section {
@@ -277,7 +302,6 @@
             font-size: 14px;
             line-height: 1.6;
         }
-
     </style>
 </head>
 <body>
@@ -292,8 +316,16 @@
                 </div>
             </a>
         </div>
-    </nav>      
+    </nav>        
     <header class="header" id="home">
+        <div class="slideshow-container" id="slideshow-container">
+            <img src="images/college.jpeg" alt="College Building">
+            <img src="images/bus.jpg" alt="College Bus">
+            <img src="images/lab.jpg" alt="College Lab">
+            <img src="images/principal.jpg" alt="College Principal">
+            <img src="images/sir.jpg" alt="A Teacher">
+            <img src="images/students.jpg" alt="Students">
+        </div>
         <div class="header-content">
         </div>
         <h2><marquee>Education is The Best Key Success in Life</marquee></h2>
@@ -304,12 +336,12 @@
             <div class="feature-card">
                 <a href="campus.html" class="">
                 <h3>ADC Environment</h3></a>
-                <p>State-of-the-art infrastructure with  campus and modern facilities.</p>
+                <p>State-of-the-art infrastructure with campus and modern facilities.</p>
             </div>
             <div class="feature-card">
                 <a href="principal.html" class="">
                 <h3>ADC Principal</h3></a>
-                <p>L.PRASAD(M.Sc  B.Ed MATHEMATICS(20 Yrs Exp))</p>
+                <p>L.PRASAD(M.Sc B.Ed MATHEMATICS(20 Yrs Exp))</p>
             </div>
             <div class="feature-card">
                 <a href="staff.html" class="">
@@ -319,7 +351,7 @@
             <div class="feature-card">
                 <a href="courses.html" class="">
                 <h3>ADC Courses</h3></a>
-                <p><p>
+                <p></p>
             </div>
             <div class="feature-card">
                 <a href="adce.html" class="">
@@ -352,7 +384,7 @@
     </section>
 
     <footer>
-        <p>&copy; 2019 Aditya Degree College. All rights reserved.</p>
+        <p>© 2019 Aditya Degree College. All rights reserved.</p>
         <div class="social-links">
             <a href="https://www.facebook.com/people/Aditya-Degree-College-Rangasamudram-Road-BKothakota/100083608380382/"><i class="fab fa-facebook"></i></a>
             <a href="#"><i class="fab fa-twitter"></i></a>
@@ -360,7 +392,6 @@
             <a href="#"><i class="fab fa-linkedin"></i></a>
         </div>
     </footer>
-
     <script>
         // Intersection Observer
         const observer = new IntersectionObserver((entries) => {
@@ -388,6 +419,43 @@
                 }
             });
         });
+
+        // --- UPDATED SLIDESHOW SCRIPT FOR SEAMLESS LOOP ---
+        const slideshowContainer = document.getElementById('slideshow-container');
+        // Get all the original images
+        const images = slideshowContainer.querySelectorAll('img');
+        const slideCount = images.length;
+        let currentIndex = 0;
+
+        // Clone the first image and append it to the end of the container
+        const firstImageClone = images[0].cloneNode(true);
+        slideshowContainer.appendChild(firstImageClone);
+
+        function showNextImage() {
+            // Move to the next index
+            currentIndex++;
+            
+            // Apply the transform to slide the container
+            slideshowContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
+            // Re-apply the smooth transition
+            slideshowContainer.style.transition = 'transform 1s ease-in-out';
+
+            // Check if the current slide is the cloned first image
+            if (currentIndex === slideCount) {
+                // After the transition animation finishes (1 second), reset to the real first image
+                setTimeout(() => {
+                    // Turn off the transition to make the jump invisible
+                    slideshowContainer.style.transition = 'none';
+                    // Reset the index to 0
+                    currentIndex = 0;
+                    // Instantly jump back to the start
+                    slideshowContainer.style.transform = `translateX(0)`;
+                }, 1000); // This time MUST match the CSS transition duration
+            }
+        }
+
+        // Change image every 5 seconds
+        setInterval(showNextImage, 5000);
     </script>
 </body>
 </html>

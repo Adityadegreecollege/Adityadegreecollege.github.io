@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aditya Degree College</title>
+    <link rel="icon" type="image/png" href="https://github.com/Adityadegreecollege2019/Images-/blob/main/clgimages/WhatsApp%20Image%202025-03-26%20at%2010.15.22_718e95e5.jpg?raw=true"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+    
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: hsla(119, 80%, 41.2%, 0.95);
+            padding: 10px 0;
+            z-index: 1000;
+            transition: 0.3s;
+        }
+    
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 0 20px;
+        }
+    
+        .logo-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            margin-right: 10px;
+            border: 2px solid #FFA500;
+            padding: 2px;
+        }
+    
+        .logo:hover .logo-img {
+            transform: rotate(360deg);
+        }
+    
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+    
+        .logo-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+    
+        .logo h1 {
+            color: #fff;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            line-height: 1.2;
+            text-align: center;
+        }
+    
+        .logo h2 {
+            color: #fff;
+            font-size: 0.8rem;
+            text-align: center;
+        }
+    
+        .h2{
+            text-align:center;
+        }
+        .nav-links {
+            display: flex;
+            gap: 35px;
+        }
+
+        .nav-links a {
+            color: #ff69b4;
+            text-decoration: none;
+            font-size: 18px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::before {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 3px;
+            background: #ff69b4;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::before {
+            width: 100%;
+        }
+
+        .nav-links a.active {
+            color: #ffffff;
+            background: #ff69b4;
+            transform: scale(1.1);
+        }
+
+        .header {
+            height: 100vh;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: BLUE;
+            overflow: hidden; /* This is crucial for the sliding effect */
+            position: relative;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 10;
+        }
+
+        .h1{
+            color:orange;
+        }
+
+        .header-content h2 {
+            font-size: 4.5em;
+            color:orange;
+        }
+
+        @keyframes titleFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .slideshow-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            transition: transform 1s ease-in-out; /* Smooth transition for the slide */
+        }
+        
+        .slideshow-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            flex-shrink: 0; /* Prevents images from shrinking */
+        }
+
+        section {
+            padding: 100px 20px;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: 0.8s;
+        }
+
+        section.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3em;
+            margin-bottom: 60px;
+            font-family: 'Playfair Display', serif;
+            background: linear-gradient(45deg, #ff69b4, #ffa500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, #ff69b4, #ffa500);
+            border-radius: 2px;
+        }
+
+        .contact-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .contact-form {
+            display: grid;
+            gap: 25px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 20px;
+            border: 2px solid #eee;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: #ff69b4;
+            box-shadow: 0 0 15px rgba(255,105,180,0.2);
+        }
+
+        .btn {
+            padding: 15px 40px;
+            background: linear-gradient(45deg, #ff69b4, #ffa500);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(255,105,180,0.3);
+        }
+
+        .map-container {
+            max-width: 1200px;
+            margin: 50px auto;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        footer {
+            background: #2f3542;
+            color: white;
+            text-align: center;
+            padding: 30px;
+            margin-top: 80px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .features-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .feature-card {
+            background: #FF9900;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid #ffa500;
+            cursor: pointer;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+            background: linear-gradient(45deg, #fff, #ffe6f2);
+        }
+
+        .feature-card h3 {
+            color: #2f3542;
+            margin-bottom: 15px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.5em;
+        }
+
+        .feature-card p {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <div class="affiliation"></div>
+    <nav class="navbar">
+        <div class="nav-content">
+            <a href="#" class="logo">
+                <img src="https://github.com/Adityadegreecollege2019/Images-/blob/main/clgimages/WhatsApp%20Image%202025-03-26%20at%2010.15.22_718e95e5.jpg?raw=true" alt="College Logo" class="logo-img">
+                <div class="logo-content">
+                    <h1>ADITYA DEGREE COLLEGE</h1>
+                    <h2>(Affiliated to S.V University)</h2>
+                </div>
+            </a>
+        </div>
+    </nav>        
+    <header class="header" id="home">
+        <div class="slideshow-container" id="slideshow-container">
+            <img src="images/college.jpeg" alt="College Building">
+            <img src="images/bus.jpg" alt="College Bus">
+            <img src="images/lab.jpg" alt="College Lab">
+            <img src="images/principal.jpg" alt="College Principal">
+            <img src="images/sir.jpg" alt="A Teacher">
+            <img src="images/students.jpg" alt="Students">
+        </div>
+        <div class="header-content">
+        </div>
+        <h2><marquee>Education is The Best Key Success in Life</marquee></h2>
+    </header>
+    <section id="about-adc">
+        <h2 class="section-title">About ADC</h2>
+        <div class="features-container">
+            <div class="feature-card">
+                <a href="campus.html" class="">
+                <h3>ADC Environment</h3></a>
+                <p>State-of-the-art infrastructure with campus and modern facilities.</p>
+            </div>
+            <div class="feature-card">
+                <a href="principal.html" class="">
+                <h3>ADC Principal</h3></a>
+                <p>L.PRASAD(M.Sc B.Ed MATHEMATICS(20 Yrs Exp))</p>
+            </div>
+            <div class="feature-card">
+                <a href="staff.html" class="">
+                <h3>ADC Staff</h3></a>
+                <p>A Good Teacher Can Change Everything</p>
+            </div>
+            <div class="feature-card">
+                <a href="courses.html" class="">
+                <h3>ADC Courses</h3></a>
+                <p></p>
+            </div>
+            <div class="feature-card">
+                <a href="adce.html" class="">
+                <h3>ADC Events</h3></a>
+                <p></p>
+            </div>
+            <div class="feature-card">
+                <a href="nss.html" class="">
+                <h3> NSS</h3></a>
+                <p></p>
+            </div>
+            <div class="feature-card">
+                <a href="placement.html" class="">
+                <h3> placements</h3></a>
+                <p></p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2 class="section-title">contact</h2>
+        <div class="contact-container">
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4346.572081027576!2d78.26184697616986!3d13.668005170424987!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bb23fbec397cf97%3A0xe2195e5f4765ce26!2sAditya%20Degree%20College!5e0!3m2!1sen!2sin!4v1743037567157!5m2!1sen!2sin" width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+       <div style="font-family: Arial, sans-serif; background-color: #f9f9f9; border: 1px solid #ddd; padding: 20px; border-radius: 8px; max-width: 500px; margin: auto;">
+  <h1 style="font-size: 20px; color: #333; margin-bottom: 10px;">
+    📍 Address:<br>
+    <span style="font-weight: normal;">M796+5MG, Rangasamudram Rd, B.Kothakota, Andhra Pradesh 517370</span>
+  </h1>
+  <h2 style="font-size: 18px; color: #555; margin-bottom: 8px;">
+    📞 Phone Numbers:<br>
+    <span style="font-weight: normal;">+91 83009995387, 9966655167</span>
+  </h2>
+  <h2 style="font-size: 18px; color: #555;">
+    📧 Email:<br>
+    <span style="font-weight: normal;">adityadcbkk@gmail.com</span>
+  </h2>
+</div>
+    </section>
+
+    <footer>
+        <p>© 2019 Aditya Degree College. All rights reserved.</p>
+        <div class="social-links">
+            <a href="https://www.facebook.com/people/Aditya-Degree-College-Rangasamudram-Road-BKothakota/100083608380382/"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+        </div>
+    </footer>
+    <script>
+        // Intersection Observer
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => entry.isIntersecting && entry.target.classList.add('active'));
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('section').forEach(section => observer.observe(section));
+
+        // Scroll Effects
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            navbar.style.background = window.scrollY > 50 ? 'rgba(14, 174, 14, 0.95)' : 'rgba(14, 174, 14, 0.95)';
+            
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-links a');
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if(window.scrollY >= sectionTop - sectionHeight/3) {
+                    const id = section.getAttribute('id');
+                    navLinks.forEach(link => {
+                        link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
+                    });
+                }
+            });
+        });
+
+        // --- UPDATED SLIDESHOW SCRIPT FOR SEAMLESS LOOP ---
+        const slideshowContainer = document.getElementById('slideshow-container');
+        // Get all the original images
+        const images = slideshowContainer.querySelectorAll('img');
+        const slideCount = images.length;
+        let currentIndex = 0;
+
+        // Clone the first image and append it to the end of the container
+        const firstImageClone = images[0].cloneNode(true);
+        slideshowContainer.appendChild(firstImageClone);
+
+        function showNextImage() {
+            // Move to the next index
+            currentIndex++;
+            
+            // Apply the transform to slide the container
+            slideshowContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
+            // Re-apply the smooth transition
+            slideshowContainer.style.transition = 'transform 1s ease-in-out';
+
+            // Check if the current slide is the cloned first image
+            if (currentIndex === slideCount) {
+                // After the transition animation finishes (1 second), reset to the real first image
+                setTimeout(() => {
+                    // Turn off the transition to make the jump invisible
+                    slideshowContainer.style.transition = 'none';
+                    // Reset the index to 0
+                    currentIndex = 0;
+                    // Instantly jump back to the start
+                    slideshowContainer.style.transform = `translateX(0)`;
+                }, 1000); // This time MUST match the CSS transition duration
+            }
+        }
+
+        // Change image every 5 seconds
+        setInterval(showNextImage, 5000);
+    </script>
+</body>
+</html>
+
